@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shahbaz Musheer | PHP Laravel Developer Expert</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@300;500;700&family=Fira+Code&display=swap"
+        rel="stylesheet">
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -23,6 +30,9 @@
             --accent: #ff2d20;
             --accent-glow: rgba(255, 45, 32, 0.4);
             --code-color: #00ff41;
+            --font-headings: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-code: 'Fira Code', monospace;
         }
 
         [data-theme="light"] {
@@ -38,9 +48,20 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: var(--font-body);
             overflow-x: hidden;
             transition: 0.5s;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .logo,
+        .btn-custom {
+            font-family: var(--font-headings);
         }
 
         /* --- BACKGROUND TECH STORM --- */
@@ -67,11 +88,11 @@
             position: fixed;
             top: 0;
             height: 100vh;
-            width: 60px;
+            width: 80px;
             display: flex;
             flex-direction: column;
             justify-content: space-around;
-            font-family: 'Courier New', monospace;
+            font-family: var(--font-code);
             font-size: 0.65rem;
             color: var(--code-color);
             opacity: 0.2;
@@ -80,11 +101,11 @@
         }
 
         .side-left {
-            left: 5px;
+            left: 10px;
         }
 
         .side-right {
-            right: 5px;
+            right: 10px;
         }
 
         /* --- NAVIGATION --- */
@@ -102,7 +123,7 @@
         }
 
         .logo {
-            font-weight: 900;
+            font-weight: 700;
             letter-spacing: 2px;
             font-size: 1.1rem;
         }
@@ -112,6 +133,7 @@
             border: 1px solid var(--text-dim);
             padding: 5px 12px;
             border-radius: 20px;
+            font-family: var(--font-headings);
         }
 
         /* --- UI COMPONENTS --- */
@@ -159,8 +181,8 @@
 
         h1 {
             font-size: clamp(2.5rem, 8vw, 4.5rem);
-            font-weight: 800;
-            line-height: 1.1;
+            font-weight: 700;
+            line-height: 1;
         }
 
         h1 span {
@@ -168,9 +190,13 @@
             text-shadow: 0 0 20px var(--accent-glow);
         }
 
+        h2 {
+            font-weight: 700;
+        }
+
         .accent-text {
             color: var(--accent);
-            font-weight: 700;
+            font-weight: 600;
         }
 
         .btn-custom {
@@ -178,7 +204,7 @@
             background: var(--accent);
             color: white;
             border: none;
-            font-weight: bold;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
             clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
@@ -200,13 +226,20 @@
 
         .skill-badge {
             display: inline-block;
-            box-shadow: 2px 4px -3px grey;
             background: rgba(255, 255, 255, 0.05);
-            padding: 5px 12px;
-            border-radius: 5px;
-            margin: 3px;
-            font-size: 0.8rem;
+            padding: 6px 14px;
+            border-radius: 6px;
+            margin: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: 0.3s;
+        }
+
+        .skill-badge:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
         }
 
         /* --- RESPONSIVENESS --- */
@@ -252,7 +285,7 @@
         <div class="logo">SHAHBAZ MUSHEER</div>
         <div class="d-flex align-items-center gap-3">
             <a href="mailto:shahbazmusheer@gmail.com" class="text-decoration-none d-none d-md-block"
-                style="color: var(--text-dim); font-size: 0.9rem;">shahbazmusheer@gmail.com</a>
+                style="color: var(--text-dim); font-size: 0.9rem; font-family: var(--font-headings);">shahbazmusheer@gmail.com</a>
             <div class="theme-toggle" id="themeBtn"><i class="fas fa-moon"></i></div>
         </div>
     </nav>
@@ -261,22 +294,24 @@
     <section class="container">
         <div class="row align-items-center">
             <div class="col-lg-7" id="hero-content">
-                <span class="accent-text mb-2 d-block" style="letter-spacing: 5px;">FULL-STACK DEVELOPER</span>
+                <span class="accent-text mb-3 d-block" style="letter-spacing: 5px;">FULL-STACK DEVELOPER</span>
                 <h1>SHAHBAZ<br><span>MUSHEER</span></h1>
-                <p class="lead">5+ Years of experience building scalable web and desktop applications. Expert in <span
-                        class="accent-text">PHP Laravel</span>, <span class="accent-text">Vue.js</span>, and <span
-                        class="accent-text">AI Integrations</span>.</p>
+                <p class="lead mt-3">5+ Years of experience building scalable web and desktop applications. Expert in
+                    <span class="accent-text">PHP Laravel</span>, <span class="accent-text">Vue.js</span>, and <span
+                        class="accent-text">AI Integrations</span>.
+                </p>
                 <div class="mt-4 d-flex flex-wrap gap-3">
                     <a href="#projects" class="btn-custom">Explore Work</a>
                     <div class="d-flex align-items-center gap-3 ms-md-3">
-                        <a href="#" class="text-white fs-4"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="text-white fs-4"><i class="fab fa-github"></i></a>
+                        <a href="https://linkedin.com/in/shahbazmusheer" target="_blank" class="text-white fs-4"><i
+                                class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/shahbazmusheer" target="_blank" class="text-white fs-4"><i
+                                class="fab fa-github"></i></a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-5 text-center" id="hero-img">
                 <div class="profile-img-wrapper">
-                    <!-- Update your image path here -->
                     <img src="assets/images/sm.jpeg" alt="Shahbaz Musheer">
                 </div>
             </div>
@@ -290,7 +325,8 @@
                 <div class="col-lg-6" id="obj-img">
                     <div class="card-custom text-center py-5">
                         <i class="fas fa-quote-left fs-1 accent-text mb-4"></i>
-                        <p class="fs-5 italic">"Results-driven Developer skilled in building secure APIs, integrating
+                        <p class="fs-5 italic fw-light">"Results-driven Developer skilled in building secure APIs,
+                            integrating
                             payment gateways, and deploying production-ready apps on AWS. Adept at leading projects from
                             concept to deployment within tight deadlines."</p>
                     </div>
@@ -304,13 +340,13 @@
                         <div class="col-6">
                             <div class="card-custom p-3 text-center">
                                 <h3 class="accent-text mb-0">5+</h3>
-                                <small>Years Exp.</small>
+                                <small class="fw-bold">Years Exp.</small>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="card-custom p-3 text-center">
                                 <h3 class="accent-text mb-0">20+</h3>
-                                <small>Projects</small>
+                                <small class="fw-bold">Projects</small>
                             </div>
                         </div>
                     </div>
@@ -328,9 +364,9 @@
 
                 <!-- Orhan Digital -->
                 <div class="card-custom h-auto mb-4 reveal">
-                    <div class="d-flex justify-content-between flex-wrap gap-2 mb-3">
-                        <h4 class="mb-0">Laravel Developer <span class="accent-text">@ Orhan Digital</span></h4>
-                        <span class="badge bg-danger">Jan 2024 – Dec 2025</span>
+                    <div class="mb-3">
+                        <h4 class="mb-2">Laravel Developer <span class="accent-text">@ Orhan Digital</span></h4>
+                        <span class="badge bg-danger rounded-pill px-3">Jan 2024 – Dec 2025</span>
                     </div>
                     <ul class="text-dim small">
                         <li>Developed multiple Laravel projects for client-based solutions.</li>
@@ -345,10 +381,10 @@
 
                 <!-- Al Asra 1 -->
                 <div class="card-custom h-auto mb-4 reveal">
-                    <div class="d-flex justify-content-between flex-wrap gap-2 mb-3">
-                        <h4 class="mb-0">Laravel & Vue JS Developer <span class="accent-text">@ Al Asra
+                    <div class="mb-3">
+                        <h4 class="mb-2">Laravel & Vue JS Developer <span class="accent-text">@ Al Asra
                                 Technologies</span></h4>
-                        <span class="badge bg-secondary">Jan 2022 – Nov 2023</span>
+                        <span class="badge bg-secondary rounded-pill px-3">Jan 2022 – Nov 2023</span>
                     </div>
                     <ul class="text-dim small">
                         <li>Designed user interactions, servers, and databases for website functionality.</li>
@@ -361,10 +397,10 @@
 
                 <!-- Divine -->
                 <div class="card-custom h-auto mb-4 reveal">
-                    <div class="d-flex justify-content-between flex-wrap gap-2 mb-3">
-                        <h4 class="mb-0">PHP Laravel Developer <span class="accent-text">@ Divine Technologies</span>
+                    <div class="mb-3">
+                        <h4 class="mb-2">PHP Laravel Developer <span class="accent-text">@ Divine Technologies</span>
                         </h4>
-                        <span class="badge bg-secondary">Jun 2021 – Nov 2021</span>
+                        <span class="badge bg-secondary rounded-pill px-3">Jun 2021 – Nov 2021</span>
                     </div>
                     <ul class="text-dim small">
                         <li>Developed server-side logic and front-end architectures for web and mobile.</li>
@@ -419,7 +455,7 @@
                 <div class="col-md-6 col-xl-4 reveal">
                     <div class="card-custom">
                         <h4 class="accent-text">Lineup Hero</h4>
-                        <p class="small text-dim">Laravel + Python + ML</p>
+                        <p class="small text-dim fw-bold">Laravel + Python + ML</p>
                         <p class="small">Built backend for automated baseball/softball lineup building using machine
                             learning. Integrated Stripe & AWS EC2 deployment.</p>
                     </div>
@@ -427,7 +463,7 @@
                 <div class="col-md-6 col-xl-4 reveal">
                     <div class="card-custom">
                         <h4 class="accent-text">AI Card Generator</h4>
-                        <p class="small text-dim">Node.js + MongoDB + Stability AI</p>
+                        <p class="small text-dim fw-bold">Node.js + MongoDB + AI</p>
                         <p class="small">Custom AI application for generating cards with text overlays. Real-time queue
                             management with PM2 and AWS.</p>
                     </div>
@@ -435,7 +471,7 @@
                 <div class="col-md-6 col-xl-4 reveal">
                     <div class="card-custom">
                         <h4 class="accent-text">CNC Vectoria</h4>
-                        <p class="small text-dim">Laravel Marketplace</p>
+                        <p class="small text-dim fw-bold">Laravel Marketplace</p>
                         <p class="small">Multi-vendor marketplace for CNC designs with rating systems, instant
                             downloads, and vendor commission management.</p>
                     </div>
@@ -443,7 +479,7 @@
                 <div class="col-md-6 col-xl-4 reveal">
                     <div class="card-custom">
                         <h4 class="accent-text">Installment System</h4>
-                        <p class="small text-dim">Financial Management</p>
+                        <p class="small text-dim fw-bold">Financial Management</p>
                         <p class="small">Tracking for 28,000+ customers across 11 branches. Automated scheduling and
                             stock transaction modules.</p>
                     </div>
@@ -451,7 +487,7 @@
                 <div class="col-md-6 col-xl-4 reveal">
                     <div class="card-custom">
                         <h4 class="accent-text">Workshop Software</h4>
-                        <p class="small text-dim">POS Solution</p>
+                        <p class="small text-dim fw-bold">POS Solution</p>
                         <p class="small">POS-enabled management software for billing, service records, and automated
                             service reminders.</p>
                     </div>
@@ -460,10 +496,10 @@
                     <div class="card-custom text-center d-flex flex-column justify-content-center">
                         <h5 class="mb-3">Python AI Bots</h5>
                         <div class="d-flex flex-wrap justify-content-center gap-1">
-                            <span class="badge bg-dark">Gemini Voice</span>
-                            <span class="badge bg-dark">Speech-to-Text</span>
-                            <span class="badge bg-dark">Auto Entry</span>
-                            <span class="badge bg-dark">BG Remover</span>
+                            <span class="badge bg-dark rounded-pill">Gemini Voice</span>
+                            <span class="badge bg-dark rounded-pill">Speech-to-Text</span>
+                            <span class="badge bg-dark rounded-pill">Auto Entry</span>
+                            <span class="badge bg-dark rounded-pill">BG Remover</span>
                         </div>
                     </div>
                 </div>
@@ -478,14 +514,14 @@
             <div class="col-md-4 reveal">
                 <div class="card-custom">
                     <h5 class="accent-text">BS Computer Science</h5>
-                    <p class="mb-0">The Islamia University of Bahawalpur</p>
+                    <p class="mb-0 fw-bold">The Islamia University of Bahawalpur</p>
                     <small class="text-dim">Expected 2026</small>
                 </div>
             </div>
             <div class="col-md-4 reveal">
                 <div class="card-custom">
                     <h5 class="accent-text">Intermediate</h5>
-                    <p class="mb-0">Nicaas College, BWP</p>
+                    <p class="mb-0 fw-bold">Nicaas College, BWP</p>
                     <small class="text-dim">2020</small>
                 </div>
             </div>
@@ -494,12 +530,15 @@
 
     <footer class="container-fluid text-center py-5" style="border-top: 1px solid rgba(255,255,255,0.05);">
         <div class="mb-4 fs-3 d-flex justify-content-center gap-4">
-            <a href="#" class="accent-text"><i class="fab fa-linkedin"></i></a>
-            <a href="#" class="accent-text"><i class="fab fa-github"></i></a>
-            <a href="#" class="accent-text"><i class="fas fa-envelope"></i></a>
+            <a href="https://linkedin.com/in/shahbazmusheer" target="_blank" class="accent-text"><i
+                    class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/shahbazmusheer" target="_blank" class="accent-text"><i
+                    class="fab fa-github"></i></a>
+            <a href="mailto:shahbazmusheer@gmail.com" class="accent-text"><i class="fas fa-envelope"></i></a>
         </div>
-        <p class="small text-dim mb-0">© 2024 Shahbaz Musheer | PHP Laravel Developer</p>
-        <p class="x-small text-dim" style="font-size: 0.7rem;">I will be responsible for the details written above.</p>
+        <p class="small text-dim mb-0 fw-bold">© 2024 Shahbaz Musheer | PHP Laravel Developer</p>
+        <p class="x-small text-dim mt-2" style="font-size: 0.7rem;">I will be responsible for the details written above.
+        </p>
     </footer>
 
     <script>
