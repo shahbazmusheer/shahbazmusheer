@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shahbaz Musheer | PHP Laravel Developer Expert</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <style>
+        :root {
+            --bg-color: #050505;
+            --card-bg: rgba(22, 22, 26, 0.85);
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
+            --accent: #ff2d20;
+            --accent-glow: rgba(255, 45, 32, 0.4);
+            --code-color: #00ff41;
+        }
+
+        [data-theme="light"] {
+            --bg-color: #f5f7fa;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --text-main: #1a1a1a;
+            --text-dim: #444444;
+            --accent: #e74438;
+            --accent-glow: rgba(231, 68, 56, 0.2);
+            --code-color: #2b9348;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            transition: 0.5s;
+        }
+
+        /* --- BACKGROUND TECH STORM --- */
+        #tech-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.4;
+        }
+
+        .floating-icon {
+            position: absolute;
+            font-size: 1.8rem;
+            color: var(--accent);
+            filter: drop-shadow(0 0 8px var(--accent-glow));
+        }
+
+        /* --- SIDE CODING OBJECTS --- */
+        .code-side {
+            position: fixed;
+            top: 0;
+            height: 100vh;
+            width: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            font-family: 'Courier New', monospace;
+            font-size: 0.65rem;
+            color: var(--code-color);
+            opacity: 0.2;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .side-left {
+            left: 5px;
+        }
+
+        .side-right {
+            right: 5px;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-weight: 900;
+            letter-spacing: 2px;
+            font-size: 1.1rem;
+        }
+
+        .theme-toggle {
+            cursor: pointer;
+            border: 1px solid var(--text-dim);
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+
+        /* --- UI COMPONENTS --- */
+        section {
+            padding: 100px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-custom {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            height: 100%;
+            transition: 0.3s;
+        }
+
+        .card-custom:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .profile-img-wrapper {
+            width: 100%;
+            max-width: 350px;
+            aspect-ratio: 3/4;
+            border: 2px solid var(--accent);
+            border-radius: 20px;
+            position: relative;
+            transform: rotate(3deg);
+            margin: 0 auto;
+        }
+
+        .profile-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 18px;
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            background: #222;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+        }
+
+        h1 span {
+            color: var(--accent);
+            text-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .accent-text {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .btn-custom {
+            padding: 12px 30px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-custom:hover {
+            transform: scale(1.05);
+            color: white;
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .sticky-sidebar {
+            position: sticky;
+            top: 100px;
+        }
+
+        .skill-badge {
+            display: inline-block;
+            box-shadow: 2px 4px -3px grey;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 5px 12px;
+            border-radius: 5px;
+            margin: 3px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* --- RESPONSIVENESS --- */
+        @media (max-width: 991px) {
+            .sticky-sidebar {
+                position: static;
+                margin-top: 40px;
+            }
+
+            .profile-img-wrapper {
+                margin-top: 50px;
+            }
+
+            .code-side {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="code-side side-left">
+        <div>&lt;Laravel&gt;</div>
+        <div>{Vue.js}</div>
+        <div>PHP 8.3</div>
+        <div>Eloquent</div>
+        <div>Migration</div>
+        <div>Middleware</div>
+    </div>
+    <div class="code-side side-right">
+        <div>AWS EC2</div>
+        <div>API Route</div>
+        <div>git commit</div>
+        <div>npm run dev</div>
+        <div>Composer</div>
+        <div>S3 Bucket</div>
+    </div>
+
+    <div id="tech-canvas"></div>
+
+    <nav>
+        <div class="logo">SHAHBAZ MUSHEER</div>
+        <div class="d-flex align-items-center gap-3">
+            <a href="mailto:shahbazmusheer@gmail.com" class="text-decoration-none d-none d-md-block"
+                style="color: var(--text-dim); font-size: 0.9rem;">shahbazmusheer@gmail.com</a>
+            <div class="theme-toggle" id="themeBtn"><i class="fas fa-moon"></i></div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7" id="hero-content">
+                <span class="accent-text mb-2 d-block" style="letter-spacing: 5px;">FULL-STACK DEVELOPER</span>
+                <h1>SHAHBAZ<br><span>MUSHEER</span></h1>
+                <p class="lead">5+ Years of experience building scalable web and desktop applications. Expert in <span
+                        class="accent-text">PHP Laravel</span>, <span class="accent-text">Vue.js</span>, and <span
+                        class="accent-text">AI Integrations</span>.</p>
+                <div class="mt-4 d-flex flex-wrap gap-3">
+                    <a href="#projects" class="btn-custom">Explore Work</a>
+                    <div class="d-flex align-items-center gap-3 ms-md-3">
+                        <a href="#" class="text-white fs-4"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-white fs-4"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 text-center" id="hero-img">
+                <div class="profile-img-wrapper">
+                    <!-- Update your image path here -->
+                    <img src="assets/images/sm.jpeg" alt="Shahbaz Musheer">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OBJECTIVE -->
+    <section id="objective" style="background: rgba(0,0,0,0.15);">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6" id="obj-img">
+                    <div class="card-custom text-center py-5">
+                        <i class="fas fa-quote-left fs-1 accent-text mb-4"></i>
+                        <p class="fs-5 italic">"Results-driven Developer skilled in building secure APIs, integrating
+                            payment gateways, and deploying production-ready apps on AWS. Adept at leading projects from
+                            concept to deployment within tight deadlines."</p>
+                    </div>
+                </div>
+                <div class="col-lg-6" id="obj-content">
+                    <h2 class="mb-4">The <span>Objective</span></h2>
+                    <p>Building scalable systems using Laravel & Vue.js. Expert in <span class="accent-text">AWS (EC2,
+                            S3)</span>, <span class="accent-text">Payment Gateways (Stripe, PayPal, Square)</span>, and
+                        delivering AI-powered solutions via Stability.io and Gemini integrations.</p>
+                    <div class="row mt-4">
+                        <div class="col-6">
+                            <div class="card-custom p-3 text-center">
+                                <h3 class="accent-text mb-0">5+</h3>
+                                <small>Years Exp.</small>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="card-custom p-3 text-center">
+                                <h3 class="accent-text mb-0">20+</h3>
+                                <small>Projects</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE & SKILLS SECTION -->
+    <section class="container">
+        <div class="row">
+            <!-- Experience List -->
+            <div class="col-lg-8">
+                <h2 class="mb-5">Professional <span>Journey</span></h2>
+
+                <!-- Orhan Digital -->
+                <div class="card-custom h-auto mb-4 reveal">
+                    <div class="d-flex justify-content-between flex-wrap gap-2 mb-3">
+                        <h4 class="mb-0">Laravel Developer <span class="accent-text">@ Orhan Digital</span></h4>
+                        <span class="badge bg-danger">Jan 2024 – Dec 2025</span>
+                    </div>
+                    <ul class="text-dim small">
+                        <li>Developed multiple Laravel projects for client-based solutions.</li>
+                        <li>Integrated Stripe, PayPal, and Square payment gateways.</li>
+                        <li>Built backend for <strong>Lineup Hero</strong> using Laravel & Python for automated
+                            generation.</li>
+                        <li>Integrated Image & Text Generation APIs (Stability.io, Gemini).</li>
+                        <li>Configured AWS EC2 hosting with SSL and GoDaddy redirection.</li>
+                        <li>Created AI-powered applications using Node.js for content generation.</li>
+                    </ul>
+                </div>
+
+                <!-- Al Asra 1 -->
+                <div class="card-custom h-auto mb-4 reveal">
+                    <div class="d-flex justify-content-between flex-wrap gap-2 mb-3">
+                        <h4 class="mb-0">Laravel & Vue JS Developer <span class="accent-text">@ Al Asra
+                                Technologies</span></h4>
+                        <span class="badge bg-secondary">Jan 2022 – Nov 2023</span>
+                    </div>
+                    <ul class="text-dim small">
+                        <li>Designed user interactions, servers, and databases for website functionality.</li>
+                        <li>Developed front-end architecture focused on <strong>Vue.js</strong> for interactive UI.</li>
+                        <li>Integrated back-end Laravel systems seamlessly with Vue.js-based front-ends.</li>
+                        <li>Managed IONOS, Hostinger, and Godaddy Servers.</li>
+                        <li>Implemented Google API Integrations and Payment Gateways.</li>
+                    </ul>
+                </div>
+
+                <!-- Divine -->
+                <div class="card-custom h-auto mb-4 reveal">
+                    <div class="d-flex justify-content-between flex-wrap gap-2 mb-3">
+                        <h4 class="mb-0">PHP Laravel Developer <span class="accent-text">@ Divine Technologies</span>
+                        </h4>
+                        <span class="badge bg-secondary">Jun 2021 – Nov 2021</span>
+                    </div>
+                    <ul class="text-dim small">
+                        <li>Developed server-side logic and front-end architectures for web and mobile.</li>
+                        <li>Ensured application responsiveness and theme integration.</li>
+                        <li>Overseeing projects from inception to completion.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Skills Sidebar -->
+            <div class="col-lg-4">
+                <div class="sticky-sidebar">
+                    <h2 class="mb-5">Core <span>Skills</span></h2>
+
+                    <div class="card-custom mb-3">
+                        <h6 class="accent-text small mb-3">WEB APPLICATIONS</h6>
+                        <div class="d-flex flex-wrap">
+                            <span class="skill-badge">PHP Laravel (Expert)</span><span class="skill-badge">Vue JS</span>
+                            <span class="skill-badge">MySQL</span><span class="skill-badge">NodeJS</span>
+                            <span class="skill-badge">Python Flask</span><span class="skill-badge">Bootstrap 5</span>
+                            <span class="skill-badge">AJAX/JSON</span><span class="skill-badge">JQuery</span>
+                        </div>
+                    </div>
+
+                    <div class="card-custom mb-3">
+                        <h6 class="accent-text small mb-3">CLOUD & APIS</h6>
+                        <div class="d-flex flex-wrap">
+                            <span class="skill-badge">AWS EC2</span><span class="skill-badge">Google Maps</span>
+                            <span class="skill-badge">Gemini AI</span><span class="skill-badge">Stability.io</span>
+                            <span class="skill-badge">Pixian</span><span class="skill-badge">DHL API</span>
+                        </div>
+                    </div>
+
+                    <div class="card-custom mb-3">
+                        <h6 class="accent-text small mb-3">PAYMENTS & DEPLOY</h6>
+                        <div class="d-flex flex-wrap">
+                            <span class="skill-badge">Stripe</span><span class="skill-badge">PayPal</span>
+                            <span class="skill-badge">Square</span><span class="skill-badge">Git/GitHub</span>
+                            <span class="skill-badge">SiteGround</span><span class="skill-badge">Ionos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" style="background: rgba(0,0,0,0.15);">
+        <div class="container">
+            <h2 class="mb-5 text-center">Featured <span>Projects</span></h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-xl-4 reveal">
+                    <div class="card-custom">
+                        <h4 class="accent-text">Lineup Hero</h4>
+                        <p class="small text-dim">Laravel + Python + ML</p>
+                        <p class="small">Built backend for automated baseball/softball lineup building using machine
+                            learning. Integrated Stripe & AWS EC2 deployment.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-4 reveal">
+                    <div class="card-custom">
+                        <h4 class="accent-text">AI Card Generator</h4>
+                        <p class="small text-dim">Node.js + MongoDB + Stability AI</p>
+                        <p class="small">Custom AI application for generating cards with text overlays. Real-time queue
+                            management with PM2 and AWS.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-4 reveal">
+                    <div class="card-custom">
+                        <h4 class="accent-text">CNC Vectoria</h4>
+                        <p class="small text-dim">Laravel Marketplace</p>
+                        <p class="small">Multi-vendor marketplace for CNC designs with rating systems, instant
+                            downloads, and vendor commission management.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-4 reveal">
+                    <div class="card-custom">
+                        <h4 class="accent-text">Installment System</h4>
+                        <p class="small text-dim">Financial Management</p>
+                        <p class="small">Tracking for 28,000+ customers across 11 branches. Automated scheduling and
+                            stock transaction modules.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-4 reveal">
+                    <div class="card-custom">
+                        <h4 class="accent-text">Workshop Software</h4>
+                        <p class="small text-dim">POS Solution</p>
+                        <p class="small">POS-enabled management software for billing, service records, and automated
+                            service reminders.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-4 reveal">
+                    <div class="card-custom text-center d-flex flex-column justify-content-center">
+                        <h5 class="mb-3">Python AI Bots</h5>
+                        <div class="d-flex flex-wrap justify-content-center gap-1">
+                            <span class="badge bg-dark">Gemini Voice</span>
+                            <span class="badge bg-dark">Speech-to-Text</span>
+                            <span class="badge bg-dark">Auto Entry</span>
+                            <span class="badge bg-dark">BG Remover</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="container text-center">
+        <h2 class="mb-5">Education & <span>Credentials</span></h2>
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-4 reveal">
+                <div class="card-custom">
+                    <h5 class="accent-text">BS Computer Science</h5>
+                    <p class="mb-0">The Islamia University of Bahawalpur</p>
+                    <small class="text-dim">Expected 2026</small>
+                </div>
+            </div>
+            <div class="col-md-4 reveal">
+                <div class="card-custom">
+                    <h5 class="accent-text">Intermediate</h5>
+                    <p class="mb-0">Nicaas College, BWP</p>
+                    <small class="text-dim">2020</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="container-fluid text-center py-5" style="border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="mb-4 fs-3 d-flex justify-content-center gap-4">
+            <a href="#" class="accent-text"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="accent-text"><i class="fab fa-github"></i></a>
+            <a href="#" class="accent-text"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p class="small text-dim mb-0">© 2024 Shahbaz Musheer | PHP Laravel Developer</p>
+        <p class="x-small text-dim" style="font-size: 0.7rem;">I will be responsible for the details written above.</p>
+    </footer>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // --- 1. FLYING TECH ICONS GENERATOR ---
+        const icons = [
+            'fa-brands fa-php', 'fa-brands fa-laravel', 'fa-brands fa-python',
+            'fa-brands fa-vuejs', 'fa-brands fa-html5', 'fa-brands fa-node-js',
+            'fa-brands fa-aws', 'fa-brands fa-github', 'fa-solid fa-robot', 'fa-solid fa-code'
+        ];
+        const canvas = document.getElementById('tech-canvas');
+
+        for (let i = 0; i < 20; i++) {
+            const iconEl = document.createElement('i');
+            iconEl.className = `floating-icon ${icons[Math.floor(Math.random() * icons.length)]}`;
+            iconEl.style.left = Math.random() * 100 + 'vw';
+            iconEl.style.top = Math.random() * 100 + 'vh';
+            canvas.appendChild(iconEl);
+
+            gsap.to(iconEl, {
+                x: 'random(-150, 150)',
+                y: 'random(-150, 150)',
+                rotation: 'random(-360, 360)',
+                duration: 'random(10, 20)',
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut"
+            });
+        }
+
+        // --- 2. ANIMATIONS ---
+        gsap.from("#hero-content", { opacity: 0, x: -100, duration: 1.2 });
+        gsap.from("#hero-img", { opacity: 0, scale: 0.8, rotation: 5, duration: 1.2, delay: 0.3 });
+
+        // Scroll reveals for cards
+        document.querySelectorAll('.reveal').forEach((el) => {
+            gsap.from(el, {
+                scrollTrigger: { trigger: el, start: "top 85%" },
+                opacity: 0, y: 30, duration: 0.8, ease: "power2.out"
+            });
+        });
+
+        // Background parallax for code sides
+        gsap.to(".side-left", { scrollTrigger: { scrub: 1 }, y: -200 });
+        gsap.to(".side-right", { scrollTrigger: { scrub: 1 }, y: 200 });
+
+        // --- 3. THEME TOGGLE ---
+        const themeBtn = document.getElementById('themeBtn');
+        themeBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            themeBtn.innerHTML = newTheme === 'dark' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+        });
+    </script>
+</body>
+
+</html>
