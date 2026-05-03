@@ -165,7 +165,7 @@
             border-radius: 20px;
             position: relative;
             transform: rotate(3deg);
-            margin: 0 auto;
+            margin: 5rem auto 0 auto;
         }
 
         .profile-img-wrapper img {
@@ -225,6 +225,7 @@
         }
 
         .skill-badge {
+            cursor: pointer;
             display: inline-block;
             background: rgba(255, 255, 255, 0.05);
             padding: 6px 14px;
@@ -244,13 +245,31 @@
 
         /* --- RESPONSIVENESS --- */
         @media (max-width: 991px) {
+
+            #hero-content {
+                text-align: center !important;
+            }
+
+            #hero-content h1 {
+                font-size: 80px;
+            }
+
+            #hero-content .hero-options {
+                justify-content: center;
+            }
+
+            #hero-content p.lead {
+                width: 80%;
+                margin: 10px auto;
+            }
+
             .sticky-sidebar {
                 position: static;
                 margin-top: 40px;
             }
 
             .profile-img-wrapper {
-                margin-top: 50px;
+                margin-bottom: 5rem;
             }
 
             .code-side {
@@ -293,14 +312,14 @@
     <!-- HERO SECTION -->
     <section class="container">
         <div class="row align-items-center">
-            <div class="col-lg-7" id="hero-content">
+            <div class="col-lg-7 order-2 order-lg-1" id="hero-content">
                 <span class="accent-text mb-3 d-block" style="letter-spacing: 5px;">FULL-STACK DEVELOPER</span>
                 <h1>SHAHBAZ<br><span>MUSHEER</span></h1>
                 <p class="lead mt-3">5+ Years of experience building scalable web and desktop applications. Expert in
                     <span class="accent-text">PHP Laravel</span>, <span class="accent-text">Vue.js</span>, and <span
                         class="accent-text">AI Integrations</span>.
                 </p>
-                <div class="mt-4 d-flex flex-wrap gap-3">
+                <div class="mt-4 hero-options d-flex flex-wrap gap-3">
                     <a href="#projects" class="btn-custom">Explore Work</a>
                     <div class="d-flex align-items-center gap-3 ms-md-3">
                         <a href="https://linkedin.com/in/shahbazmusheer" target="_blank" class="accent-text fs-4"><i
@@ -310,7 +329,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5 text-center" id="hero-img">
+            <div class="col-lg-5 order-1 order-lg-2 text-center" id="hero-img">
                 <div class="profile-img-wrapper">
                     <img src="assets/images/sm.jpeg" alt="Shahbaz Musheer">
                 </div>
@@ -369,13 +388,17 @@
                         <span class="badge bg-danger rounded-pill px-3">Jan 2024 – Dec 2025</span>
                     </div>
                     <ul class="text-dim small">
-                        <li>Developed multiple Laravel projects for client-based solutions.</li>
-                        <li>Integrated Stripe, PayPal, and Square payment gateways.</li>
-                        <li>Built backend for <strong>Lineup Hero</strong> using Laravel & Python for automated
-                            generation.</li>
-                        <li>Integrated Image & Text Generation APIs (Stability.io, Gemini).</li>
-                        <li>Configured AWS EC2 hosting with SSL and GoDaddy redirection.</li>
-                        <li>Created AI-powered applications using Node.js for content generation.</li>
+                        <li>Developed and maintained multiple Laravel projects for client-based solutions.</li>
+                        <li>Integrated Stripe, PayPal, and Square payment gateways into web applications.</li>
+                        <li>Built and deployed production apps on AWS EC2 and SiteGround servers.</li>
+                        <li>Built backend for Lineup Hero using Laravel and Python for automated lineup generation.</li>
+                        <li>Developed admin panel for organizations and individuals to manage teams and schedules.</li>
+                        <li>Integrated Stripe payments and promo code system.</li>
+                        <li>Configured AWS EC2 hosting with SSL and domain redirection via GoDaddy.</li>
+                        <li>Performed production database migrations and server optimizations.</li>
+                        <li>Integrated Image and Text Generation APIs like Stability.io and Gemini.</li>
+                        <li>Created AI-powered applications using Node.js for automated content and card generation.
+                        </li>
                     </ul>
                 </div>
 
@@ -387,11 +410,19 @@
                         <span class="badge bg-secondary rounded-pill px-3">Jan 2022 – Nov 2023</span>
                     </div>
                     <ul class="text-dim small">
-                        <li>Designed user interactions, servers, and databases for website functionality.</li>
-                        <li>Developed front-end architecture focused on <strong>Vue.js</strong> for interactive UI.</li>
-                        <li>Integrated back-end Laravel systems seamlessly with Vue.js-based front-ends.</li>
-                        <li>Managed IONOS, Hostinger, and Godaddy Servers.</li>
-                        <li>Implemented Google API Integrations and Payment Gateways.</li>
+                        <li>Designing user interactions on websites, developing servers and databases for website
+                            functionality.</li>
+                        <li>Responsible for writing server-side web application logic.</li>
+                        <li>Developing front-end website architecture with a focus on Vue.js for dynamic and interactive
+                            UI components.</li>
+                        <li>Designing user interactions on web pages using Vue.js, JavaScript, HTML, and CSS.</li>
+                        <li>Developing back-end website applications with Laravel and integrating them seamlessly with
+                            Vue.js-based front-end.</li>
+                        <li>Working alongside graphic designers for web design features.</li>
+                        <li>Seeing through a project from conception to production.</li>
+                        <li>Designing and developing RESTful APIs.</li>
+                        <li>Worked with IONOS, Hostinger, and GoDaddy servers.</li>
+                        <li>Google APIs integration and payment gateway API integrations.</li>
                     </ul>
                 </div>
 
@@ -403,9 +434,36 @@
                         <span class="badge bg-secondary rounded-pill px-3">Jun 2021 – Nov 2021</span>
                     </div>
                     <ul class="text-dim small">
-                        <li>Developed server-side logic and front-end architectures for web and mobile.</li>
-                        <li>Ensured application responsiveness and theme integration.</li>
+                        <li>Designing user interactions and experiences for websites and mobile platforms.</li>
+                        <li>Developing server-side logic for web applications.</li>
+                        <li>Creating front-end website architecture.</li>
+                        <li>Crafting user interactions for web pages.</li>
+                        <li>Building back-end web applications.</li>
+                        <li>Establishing servers and databases for functionality.</li>
+                        <li>Guaranteeing application responsiveness.</li>
+                        <li>Collaborating with graphic designers on web design elements.</li>
                         <li>Overseeing projects from inception to completion.</li>
+                        <li>Designing and implementing RESTful APIs.</li>
+                        <li>Keeping up-to-date with advancements in web development and programming languages.</li>
+                        <li>Utilizing IONOS and GoDaddy servers.</li>
+                        <li>Integrating Google APIs.</li>
+                        <li>Integrating front-end themes with back-end systems.</li>
+                    </ul>
+                </div>
+
+                <!-- Al Asra Technologies -->
+                <div class="card-custom h-auto mb-4 reveal">
+                    <div class="mb-3">
+                        <h4 class="mb-2">PHP Developer <span class="accent-text">@ Al Asra Technologies</span>
+                        </h4>
+                        <span class="badge bg-secondary rounded-pill px-3">Mar 2020 – May 2021</span>
+                    </div>
+                    <ul class="text-dim small">
+                        <li>Assisted in developing front-end and back-end parts of web applications.</li>
+                        <li>Helped create and manage databases and write basic APIs.</li>
+                        <li>Tested websites to ensure they worked well and loaded quickly.</li>
+                        <li>Fixed small bugs and performance issues under guidance from senior developers.</li>
+                        <li>Learned and applied basic security and user login features.</li>
                     </ul>
                 </div>
             </div>
